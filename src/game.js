@@ -15,6 +15,7 @@ class Game {
       this._draw()
       this._move()
       this._addObstacle()
+      this._checkCollisions()
       this._clearObstacles()
     }, 1000 / 60)
 
@@ -59,7 +60,18 @@ class Game {
   }
 
   _checkCollisions() {
+
     // TODO: check helicopter on floor?
+    if (this.helicopter.y + this.helicopter.h>= this.ctx.canvas.height){
+      this._gameOver()
+    }
+    for (let i=0;i<this.obstacles.length;i++){
+      //if (this.obstacles[i].y==0){
+      if (this.helicopter.x+this.helicopter.w>this.obstacles[i].x && this.helicopter.y>this.obstacles[i].h ){
+        this._gameOver()
+      }
+    //}
+    }
     // TODO: iterate obstacles. check colX and colY
   }
 
