@@ -49,15 +49,32 @@ class Helicopter {
 
   move() {
     // TODO: move
+    this.vx += this.ax
+    this.vy += this.ay
+    this.vy += this.g
+
+    this.x += this.vx
+    this.y += this.vy
+
+    
+
   }
 
   _setListeners() {
     document.addEventListener("keydown", (e) => {
       // TODO
+      if(e.keyCode === UP){
+        this.ay = -0.5
+
+      }
     })
 
     document.addEventListener("keyup", (e) => {
       // TODO
+      if(e.keyCode === UP){
+        this.ay = 0
+
+      }
     })
   }
 }

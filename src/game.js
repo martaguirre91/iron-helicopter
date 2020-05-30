@@ -14,7 +14,7 @@ class Game {
       this._clear()
       this._draw()
       this._move()
-    }, 10000 / 60)
+    }, 1000 / 60)
 
     //
 
@@ -42,6 +42,7 @@ class Game {
   _move() {
     // TODO: move everything
     this.bg.move()
+    this.helicopter.move()
   }
 
   _checkCollisions() {
