@@ -39,11 +39,11 @@ class Helicopter {
       this.w,
       this.h
     )
-    
+
     if (this.ay) {
       this.animate()
     }
-    
+
     this.weapon.draw()
   }
 
@@ -55,35 +55,36 @@ class Helicopter {
     // TODO: move
     this.vx += this.ax
     this.vy += this.ay
-    this.vy += this.g
+    // this.vy += this.g
 
     this.x += this.vx
     this.y += this.vy
 
-    if (this.x + this.w> this.ctx.canvas.width){
-      this.x = this.ctx.canvas.width - this.w
-      this.ax = 0
-    }
+    // if (this.x + this.w > this.ctx.canvas.width) {
+    //   this.x = this.ctx.canvas.width - this.w
+    //   this.ax = 0
+    // }
 
-    if (this.y > this.ctx.canvas.height){
-      this.y = this.ctx.canvas.height - this.h   
-    }
+    // if (this.y > this.ctx.canvas.height) {
+    //   this.y = this.ctx.canvas.height - this.h
+    // }
 
-    if (this.y + this.h < 0){
-      this.y = this.h
-     
-    }
+    // if (this.y + this.h < 0) {
+    //   this.y = this.h
+
+    // }
+    this.weapon.move()
   }
 
   animate() {
     this.tick++
-    if(this.tick > 3) {
+    if (this.tick > 3) {
       this.img.frameIndex++
-      this.tick=0
+      this.tick = 0
     }
 
     if (this.img.frameIndex >= this.img.frames) {
-      this.img.frameIndex=0
+      this.img.frameIndex = 0
     }
   }
 
@@ -95,7 +96,10 @@ class Helicopter {
           this.ay = -0.5
           break
         case RIGHT:
-          this.ax = .2
+          this.vx = .8
+          break
+        case SPACE:
+          this.weapon.shoot()
           break
       }
     })
@@ -103,11 +107,11 @@ class Helicopter {
     document.addEventListener("keyup", (e) => {
       // TODO
       switch (e.keyCode) {
-      case UP:
-        this.ay = 0
-        break
-      case RIGHT:
-          this.ax = 0
+        case UP:
+          this.ay = 0
+          break
+        case RIGHT:
+          this.vx = 0
           break
       }
     })
