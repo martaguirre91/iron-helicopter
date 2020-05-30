@@ -39,7 +39,11 @@ class Helicopter {
       this.w,
       this.h
     )
-
+    
+    if (this.ay) {
+      this.animate()
+    }
+    
     this.weapon.draw()
   }
 
@@ -55,9 +59,21 @@ class Helicopter {
 
     this.x += this.vx
     this.y += this.vy
-
+   
     
 
+  }
+  
+  animate() {
+    this.tick++
+    if(this.tick > 3) {
+      this.img.frameIndex++
+      this.tick=0
+    }
+
+    if (this.img.frameIndex >= this.img.frames) {
+      this.img.frameIndex=0
+    }
   }
 
   _setListeners() {
@@ -65,7 +81,7 @@ class Helicopter {
       // TODO
       if(e.keyCode === UP){
         this.ay = -0.5
-
+       
       }
     })
 
