@@ -1,7 +1,7 @@
 class Game {
   constructor(ctx) {
-    this.ctx = ctx;
-    this.intervalId = null;
+    this.ctx = ctx
+    this.intervalId = null
     this.tick = 0
 
     this.bg = new Background(ctx)
@@ -14,11 +14,11 @@ class Game {
       this._clear()
       this._draw()
       this._move()
-    }, 10000/60)
+    }, 10000 / 60)
 
-      //
-      
-      // TODO: loop. clear, draw, move, addObstacle, checkCollisions, clearObstacles
+    //
+
+    // TODO: loop. clear, draw, move, addObstacle, checkCollisions, clearObstacles
   }
 
   _clearObstacles() {
@@ -36,6 +36,7 @@ class Game {
   _draw() {
     // TODO: draw everything
     this.bg.draw()
+    this.helicopter.draw()
   }
 
   _move() {
@@ -51,12 +52,12 @@ class Game {
   _gameOver() {
     clearInterval(this.intervalId)
 
-    this.ctx.font = "40px Comic Sans MS";
-    this.ctx.textAlign = "center";
+    this.ctx.font = "40px Comic Sans MS"
+    this.ctx.textAlign = "center"
     this.ctx.fillText(
       "GAME OVER",
       this.ctx.canvas.width / 2,
       this.ctx.canvas.height / 2
-    );
+    )
   }
 }

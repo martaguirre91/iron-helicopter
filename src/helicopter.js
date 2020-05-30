@@ -9,8 +9,6 @@ class Helicopter {
     this.w = 100
     this.h = 40
 
-    this.x = 0
-    this.y = 0
     this.vx = 0
     this.vy = 0
     this.ay = 0
@@ -18,7 +16,8 @@ class Helicopter {
     this.g = 0.1
 
     this.img = new Image()
-    this.img.src = "https://2.bp.blogspot.com/-P6ZbLE-rnFM/WPTQh65UtMI/AAAAAAAABF8/9iYl-cIUEtIhj2JDTixyqZNeBn183AdmQCLcB/s1600/helicopter-spritesheet.png"
+    this.img.src =
+      "https://2.bp.blogspot.com/-P6ZbLE-rnFM/WPTQh65UtMI/AAAAAAAABF8/9iYl-cIUEtIhj2JDTixyqZNeBn183AdmQCLcB/s1600/helicopter-spritesheet.png"
     this.img.frames = 4
     this.img.frameIndex = 0
 
@@ -29,6 +28,17 @@ class Helicopter {
 
   draw() {
     // TODO: draw helicopter image
+    this.ctx.drawImage(
+      this.img,
+      0,
+      (this.img.frameIndex * this.img.height) / this.img.frames,
+      this.img.width,
+      this.img.height / this.img.frames,
+      this.x,
+      this.y,
+      this.w,
+      this.h
+    )
 
     this.weapon.draw()
   }
@@ -42,11 +52,11 @@ class Helicopter {
   }
 
   _setListeners() {
-    document.addEventListener('keydown', e => {
+    document.addEventListener("keydown", (e) => {
       // TODO
     })
 
-    document.addEventListener('keyup', e => {
+    document.addEventListener("keyup", (e) => {
       // TODO
     })
   }
