@@ -10,7 +10,7 @@ class Game {
   }
 
   start() {
-    this.intervalId = setInterval{
+    this.intervalId = setInterval(() => {
       this._clear()
       this._draw()
       this._move()
@@ -35,10 +35,12 @@ class Game {
 
   _draw() {
     // TODO: draw everything
+    this.bg.draw()
   }
 
   _move() {
     // TODO: move everything
+    this.bg.move()
   }
 
   _checkCollisions() {
