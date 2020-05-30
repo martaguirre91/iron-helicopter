@@ -59,11 +59,22 @@ class Helicopter {
 
     this.x += this.vx
     this.y += this.vy
-   
-    
 
+    if (this.x + this.w> this.ctx.canvas.width){
+      this.x = this.ctx.canvas.width - this.w
+      this.ax = 0
+    }
+
+    if (this.y > this.ctx.canvas.height){
+      this.y = this.ctx.canvas.height - this.h   
+    }
+
+    if (this.y + this.h < 0){
+      this.y = this.h
+     
+    }
   }
-  
+
   animate() {
     this.tick++
     if(this.tick > 3) {
@@ -79,18 +90,27 @@ class Helicopter {
   _setListeners() {
     document.addEventListener("keydown", (e) => {
       // TODO
-      if(e.keyCode === UP){
-        this.ay = -0.5
-       
+      switch (e.keyCode) {
+        case UP:
+          this.ay = -0.5
+          break
+        case RIGHT:
+          this.ax = .2
+          break
       }
     })
 
     document.addEventListener("keyup", (e) => {
       // TODO
-      if(e.keyCode === UP){
+      switch (e.keyCode) {
+      case UP:
         this.ay = 0
-
+        break
+      case RIGHT:
+          this.ax = 0
+          break
       }
     })
+
   }
 }
