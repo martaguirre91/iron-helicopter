@@ -10,7 +10,15 @@ class Game {
   }
 
   start() {
-    // TODO: loop. clear, draw, move, addObstacle, checkCollisions, clearObstacles
+    this.intervalId = setInterval{
+      this._clear()
+      this._draw()
+      this._move()
+    }, 10000/60)
+
+      //
+      
+      // TODO: loop. clear, draw, move, addObstacle, checkCollisions, clearObstacles
   }
 
   _clearObstacles() {
