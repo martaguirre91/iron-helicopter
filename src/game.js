@@ -25,6 +25,8 @@ class Game {
 
   _clearObstacles() {
     // TODO: filter only visible obstacles (call o.isVisible())
+    console.log(this.obstacles)
+    this.obstacles = this.obstacles.filter( el => el.isVisible() )
   }
 
   _addObstacle() {
